@@ -1,0 +1,202 @@
+---
+import '../styles/global.css';
+
+---
+
+<html lang="es" data-theme="dark">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="idle1.jpg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Para Moni ❤️</title>
+
+
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+	
+		<style>
+
+			body{
+				min-height: 100vh;
+				min-width: 100vw;
+			}
+			
+			section {
+				background-image: url('/cinna/bg_1.png');
+
+				overflow: hidden;
+				background-size: cover;
+				background-position: top;
+				background-repeat: no-repeat;
+				min-height: 100vh;
+				min-width: 100vw;
+
+				mask-image: url('/cinna.svg');
+				mask-position: center;
+				mask-repeat: no-repeat;
+				mask-size: 50px;
+			
+				animation: cinnamorrollOpen 6s 0.5s linear forwards;
+				animation-play-state: paused;
+			}
+
+			@keyframes cinnamorrollOpen {
+				0% {
+					mask-size: 50px;
+				}
+				100% {
+					mask-size: 1000vh;
+					mask-image: none;
+				}
+				
+			}
+
+			#cinna {
+				background-image: url('/cinna/cinna3.png');
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: auto 100%;
+				animation: cinnaTalk;
+				animation-duration: 1s;
+				animation-iteration-count: infinite;
+				animation-timing-function: linear;
+				animation-fill-mode: alternate;
+				animation-play-state: paused;
+			}
+
+			#contenedor{
+				background-image: url('/cinna/meltedTransition.png');
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: 100% 100%;
+			}
+
+			@keyframes cinnaTalk {
+				0% {
+					transform: skew(0deg);
+				}
+
+				25% {
+					transform: skew(-3deg) scaleY(1.3);
+				}
+
+				50% {
+					transform: skew(0deg) scaleY(1);
+				}
+
+				75% {
+					transform: skew(3deg) scaleY(1.3);
+				}
+
+				100% {
+					transform: skew(0deg) scaleY(1);
+				}
+			}
+
+		</style>
+	</head>
+	
+	
+	<body>
+		
+		<main>
+
+			<section class="w-screen h-screen flex flex-wrap justify-center items-center">
+
+				<div class="w-full h-1/4 md:w-1/2 md:h-1/2 absolute top-1/2 left-1/2 -translate-1/2 opacity-50 backdrop-blur-3xl rounded-4xl
+				border-dashed border-10 border-amber-400 " id="contenedor">
+				</div>
+
+				<div id="cinna" class="w-full h-1/4 md:w-1/2 md:h-1/2 relative">.</div>
+
+			</section>
+
+			<button onclick="iniciar()" class=" absolute top-1/2 left-1/2 rounded-2xl bg-blue-400 border-gray-50 border-dashed border-4 box-border text-2xl px-5 py-3 -translate-y-1/2 -translate-x-1/2" id="btnInicio">Subir volumen y hacer click por favor</button>
+
+		</main>
+
+
+	</body>
+
+	<script>
+		import gsap from "gsap";
+
+		
+
+		document.addEventListener("DOMContentLoaded", () => {
+			const btn = document.getElementById("btnInicio");
+			if(btn){
+				btn.addEventListener("click", iniciar);
+			}
+
+			function iniciar() {
+				const sonido = new Audio('/cinna/moka.MP3');	
+
+				gsap.to("#btnInicio",{
+					display: "none",
+					onComplete: () => {
+						gsap.to("section", {
+							animationPlayState: "running"
+						});
+
+						const tl = gsap.timeline({ defaults: { duration: 0.1 } });
+
+						tl.to("#cinna", { animationPlayState: "running", delay: 2 , onComplete: () => {
+							sonido.volume = 0.5;
+							sonido.play();
+						}})
+						.to("#cinna", { animationPlayState : "paused"}, "+=2")
+						.to("#cinna", { onComplete: ()=> {
+							document.getElementById("cinna")!.style.backgroundImage = "url('/cinna/cinna1.png')";
+						}, animationPlayState : "running"}, "+=0.3")
+						.to("#cinna", { animationPlayState : "paused"}, "+=2.3")
+						.to("#cinna", { onComplete: ()=> {
+							document.getElementById("cinna")!.style.backgroundImage = "url('/cinna/cinna4.png')";
+						}, animationDuration: 0.5, animationPlayState : "running" }, "+=0.5")
+						.to("#cinna", { animationPlayState : "paused"}, "+=1")
+						.to("#cinna", {onComplete: ()=> {
+							document.getElementById("cinna")!.style.backgroundImage = "url('/cinna/cinna3.png')";
+						}, animationPlayState : "running"}, "+=1.5")
+						.to("#cinna", { animationPlayState : "paused"}, "+=0.5")
+						.to("#cinna", { animationDuration: 1, animationPlayState : "running"}, "+=0.3")
+						.to("#cinna", { animationPlayState : "paused",}, "+=1")
+						.to("#cinna", { animationPlayState : "running",}, "+=0.3")
+						.to("#cinna", { animationPlayState : "paused",}, "+=0.8")
+						.to("#cinna", { animationPlayState : "running",}, "+=1.5")
+						.to("#cinna", { animationPlayState : "paused",}, "+=0.8")
+						.to("#cinna", {onStart: ()=> {
+							document.getElementById("cinna")!.style.backgroundImage = "url('/cinna/cinna1.png')";
+						},  animationPlayState : "running",}, "+=0.7")
+						.to("#cinna", { animationPlayState : "paused",}, "+=1.5")
+						.to("#cinna", { animationPlayState : "running",}, "+=0.3")
+						.to("#cinna", { animationPlayState : "paused",}, "+=0.8")
+						.to("#cinna", { onStart: ()=> {
+							document.getElementById("cinna")!.style.backgroundImage = "url('/cinna/cinna7.png')";
+						},  animationPlayState : "running"}, "+=1.3")
+						.to("#cinna", { animationDuration: 1.5}, "+=0.5")
+						.to("#cinna", { animationPlayState : "paused",}, "+=0.1")
+						.to("#cinna", { animationPlayState : "running",}, "+=0.3")
+						.to("#cinna", { animationPlayState : "paused",}, "+=1.5")
+						.to("#cinna", {onStart: ()=> {
+							document.getElementById("cinna")!.style.backgroundImage = "url('/cinna/cinna1.png')";
+						},  animationPlayState : "running",}, "+=0.5")
+						.to("#cinna", { animationPlayState : "paused",}, "+=0.5")
+						.to("#cinna", { animationDuration: 0.5}, "+=0.1")
+						.to("#cinna", {onStart: ()=> {
+							document.getElementById("cinna")!.style.backgroundImage = "url('/cinna/cinna6.png')";
+						},   animationPlayState : "running",}, "+=2.3")
+						.to("#cinna", { animationPlayState : "paused",}, "+=2.5")
+						.to("#cinna", { animationPlayState : "running",}, "+=0.7")
+						.to("#cinna", { animationPlayState : "paused",}, "+=1.5")
+
+					}
+				});
+
+			}
+
+        });
+
+	</script>
+</html>

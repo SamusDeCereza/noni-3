@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_2" data-name="Capa 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 171.5 129.34">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #015a96;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5 {
+        stroke-width: 0px;
+      }
+
+      .cls-2 {
+        fill: #3de3f9;
+      }
+
+      .cls-3 {
+        fill: #05325b;
+      }
+
+      .cls-4 {
+        fill: #00aece;
+      }
+
+      .cls-5 {
+        fill: #0c74bb;
+      }
+
+      .cls-6 {
+        fill: none;
+        stroke: #ff0007;
+        stroke-miterlimit: 10;
+        stroke-width: 2px;
+      }
+
+      .cls-7 {
+        fill: #fff;
+        font-family: MicrosoftYaHeiUI, 'Microsoft YaHei UI';
+        font-size: 6.03px;
+      }
+    </style>
+  </defs>
+  <g id="Capa_1-2" data-name="Capa 1">
+    <circle class="cls-2" cx="55.28" cy="23.79" r="3.89"/>
+    <rect class="cls-2" x="60.05" y="30.72" width="3.46" height="11.18" rx="1.73" ry="1.73" transform="translate(43.77 -33.05) rotate(45)"/>
+    <rect class="cls-2" x="54.69" y="30.06" width="3.46" height="11.44" rx="1.73" ry="1.73" transform="translate(-10.27 39.85) rotate(-35.87)"/>
+    <rect class="cls-2" x="51.97" y="39.87" width="4.65" height="11.18" rx="2.32" ry="2.32" transform="translate(-16.49 47.48) rotate(-41.58)"/>
+    <rect class="cls-2" x="47.19" y="40.4" width="4.65" height="11.18" rx="2.32" ry="2.32" transform="translate(-3.71 4.35) rotate(-4.85)"/>
+    <rect class="cls-2" x="54.47" y="46.06" width="4.31" height="11.88" rx="2.16" ry="2.16"/>
+    <rect class="cls-2" x="45.19" y="46.5" width="4.31" height="12.45" rx="2.16" ry="2.16" transform="translate(43.66 -18.04) rotate(38.94)"/>
+    <rect class="cls-2" x="47.84" y="28.5" width="7.01" height="16.43" rx="3.5" ry="3.5" transform="translate(5.06 -6.21) rotate(7.27)"/>
+    <text class="cls-7" transform="translate(40.5 37.69)"><tspan x="0" y="0">$</tspan></text>
+    <path class="cls-1" d="m159.84,107.84H11.66c-6.43,0-11.66-5.23-11.66-11.66V11.66C0,5.23,5.23,0,11.66,0h148.18c6.43,0,11.66,5.23,11.66,11.66v84.53c0,6.43-5.23,11.66-11.66,11.66ZM11.66,2.91C6.83,2.91,2.91,6.83,2.91,11.66v84.53c0,4.82,3.92,8.75,8.75,8.75h148.18c4.82,0,8.75-3.92,8.75-8.75V11.66c0-4.82-3.92-8.75-8.75-8.75H11.66Z"/>
+    <path class="cls-4" d="m108.99,115.81h-41.67v-10.46h41.67v10.46Zm-38.76-2.91h35.85v-4.64h-35.85v4.64Z"/>
+    <path class="cls-3" d="m136.47,129.34H43.26l11.6-16.39h70.01l11.6,16.39Zm-87.58-2.91h81.96l-7.48-10.56H56.36l-7.48,10.56Z"/>
+    <rect class="cls-1" x="-.53" y="48.12" width="159.15" height="3" transform="translate(-14.26 47.62) rotate(-30.89)"/>
+    <path class="cls-5" d="m148.47,99.33c-1.1,0-2-.88-2-1.97V16.65c0-1.09.9-1.97,2-1.97s2,.88,2,1.97v80.71c0,1.09-.9,1.97-2,1.97Z"/>
+    <path class="cls-5" d="m130.19,98.19c-1.1,0-2-.9-2-2V27.04c0-1.1.9-2,2-2s2,.9,2,2v69.14c0,1.1-.9,2-2,2Z"/>
+    <path class="cls-5" d="m113.05,98.19c-1.1,0-2-.9-2-2v-59.43c0-1.1.9-2,2-2s2,.9,2,2v59.43c0,1.1-.9,2-2,2Z"/>
+    <path class="cls-5" d="m92.48,99.33c-1.1,0-2-.91-2-2.04v-47.86c0-1.13.9-2.04,2-2.04s2,.91,2,2.04v47.86c0,1.13-.9,2.04-2,2.04Z"/>
+    <path class="cls-5" d="m72.48,98.19c-1.1,0-2-.9-2-2v-35.43c0-1.1.9-2,2-2s2,.9,2,2v35.43c0,1.1-.9,2-2,2Z"/>
+    <path class="cls-5" d="m53.05,99.33c-1.1,0-2-1.08-2-2.42v-23.49c0-1.34.9-2.42,2-2.42s2,1.08,2,2.42v23.49c0,1.34-.9,2.42-2,2.42Z"/>
+    <path class="cls-5" d="m30.76,99.33c-1.1,0-2-.9-2-2v-11.43c0-1.1.9-2,2-2s2,.9,2,2v11.43c0,1.1-.9,2-2,2Z"/>
+    <rect class="cls-1" x=".83" y="51.54" width="167.29" height="3" transform="translate(-15.24 50.4) rotate(-30.61)"/>
+    <path class="cls-2" d="m151.1,100.52H20.39c-6.43,0-11.66-5.23-11.66-11.66V18.71c0-6.43,5.23-11.66,11.66-11.66h130.71c6.43,0,11.66,5.23,11.66,11.66v70.15c0,6.43-5.23,11.66-11.66,11.66ZM20.39,9.97c-4.82,0-8.75,3.92-8.75,8.75v70.15c0,4.82,3.92,8.75,8.75,8.75h130.71c4.82,0,8.75-3.92,8.75-8.75V18.71c0-4.82-3.92-8.75-8.75-8.75H20.39Z"/>
+    <rect class="cls-6" x="35.63" y="15.61" width="35.81" height="48"/>
+  </g>
+</svg>
