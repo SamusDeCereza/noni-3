@@ -9,18 +9,37 @@ import Analytics from '@vercel/analytics/astro'
 		<link rel="icon" type="image/svg+xml" href="idle1.jpg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Para Moni ❤️</title>
+		<title>Noni ❤️</title>
+
 
 
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-	
+		<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
 		<style>
+
+
+			.bitter-<uniquifier> {
+			font-family: "Bitter", serif;
+			font-optical-sizing: auto;
+			font-weight: <weight>;
+			font-style: normal;
+			}
+
+			.sour-gummy-<uniquifier> {
+			font-family: "Sour Gummy", sans-serif;
+			font-optical-sizing: auto;
+			font-weight: <weight>;
+			font-style: normal;
+			font-variation-settings:
+				"wdth" 100;
+			}
 
 			body{
 				min-height: 100vh;
 				min-width: 100vw;
+				font-family: Sour Gummy;
 			}
 			
 			section {
@@ -36,19 +55,27 @@ import Analytics from '@vercel/analytics/astro'
 				mask-image: url('/cinna.svg');
 				mask-position: center;
 				mask-repeat: no-repeat;
-				mask-size: 50px;
+				mask-size: 0px;
 			
-				animation: cinnamorrollOpen 6s 0.5s linear forwards;
-				animation-play-state: paused;
+				animation: cinnamorrollOpen 3s 4s ease-in forwards;
+				animation-play-state: running;
 			}
 
 			@keyframes cinnamorrollOpen {
 				0% {
-					mask-size: 50px;
+					mask-size: 0px;
 				}
+
+				20% {
+					mask-size: 50vh;
+				}
+
+				40% {
+					mask-size: 30vh;
+				}
+
 				100% {
 					mask-size: 1000vh;
-					mask-image: none;
 				}
 				
 			}
@@ -95,6 +122,33 @@ import Analytics from '@vercel/analytics/astro'
 				}
 			}
 
+			input[type="range"] {
+			-webkit-appearance: none;
+			height: 12px;
+			background: #ddd;
+			border-radius: 5px;
+			outline: none;
+			}
+
+			/* Barra */
+			input[type="range"]::-webkit-slider-runnable-track {
+			height: 12px;
+			background: rgb(73, 161, 233);
+			border-radius: 5px;
+			}
+
+			/* Botón */
+			input[type="range"]::-webkit-slider-thumb {
+			-webkit-appearance: none;
+			height: 32px;
+			width: 32px;
+			border-radius: 50%;
+			background: white;
+			border: 2px solid rgb(132, 193, 243);
+			cursor: pointer;
+			margin-top: -12px; /* centra el thumb */
+			}
+
 		</style>
 	</head>
 	
@@ -106,15 +160,161 @@ import Analytics from '@vercel/analytics/astro'
 
 			<section class="w-screen h-screen flex flex-wrap justify-center items-center">
 
-				<div class="w-full h-1/4 md:w-1/2 md:h-1/2 absolute top-1/2 left-1/2 -translate-1/2 opacity-50 backdrop-blur-3xl rounded-4xl
+				<!-- <div class="w-full h-1/4 md:w-1/2 md:h-1/2 absolute top-1/2 left-1/2 -translate-1/2 opacity-50 backdrop-blur-3xl rounded-4xl
 				border-dashed border-10 border-amber-400 " id="contenedor">
+				</div> -->
+
+				<!-- <div id="cinna" class="w-full h-1/4 md:w-1/2 md:h-1/2 relative">.</div> -->
+
+				<div id="player"></div>
+
+				<div class="flex bg-blue-300 p-10 rounded-2xl relative items-center gap-5">
+					<div class="bg-cover bg-center bg-no-repeat h-[200px] w-[200px] rounded-lg" id="currentVideo"></div>
+
+					<div class="grid grid-rows-4 items-center">
+						<div class="grid grid-rows-2 row-span-3">
+							<div class="flex flex-wrap px-5 items-center align-middle">
+								<h1 class="p-0 m-0 text-center w-full text-3xl text-ellipsis" id="title"></h1>
+								<h2 class="p-0 m-0 text-center w-full text-xl text-ellipsis" id="author">.</h1>
+							</div>
+
+							<div class="grid grid-cols-3 !items-center">
+								<img src="/cinna/UI/playerButtons/play.png" alt="" id="btnPlay" class="size-24">
+								<img src="/cinna/UI/playerButtons/back.png" alt="" id="btnPrev" class="size-24">
+								<img src="/cinna/UI/playerButtons/next.png" alt="" id="btnNext" class="size-24">
+							</div>
+
+						</div>
+
+						<div class="flex flex-wrap h-fit px-5">
+							<input type="range" id="vol" min="0" max="100" value="50" class="w-full">
+						</div>
+					</div>
+
+					
+
+					<img src="/cinna/UI/bar1.png" alt="" class="absolute rotate-90 left-0 top-1/2 w-[300px] -translate-x-1/2 -translate-y-1/2">
+					<img src="/cinna/UI/bar1.png" alt="" class="absolute rotate-270 right-0 top-1/2 w-[300px] translate-x-1/2 -translate-y-1/2">
+
+					<img src="/cinna/UI/bar3.png" alt="" class="absolute w-full rotate-180 top-0 left-1/2 -translate-x-1/2 -translate-y-1/4 scale-110">
+					<img src="/cinna/UI/bar3.png" alt="" class="absolute w-full bottom-0 left-1/2 -translate-x-1/2 translate-y-1/4 scale-110">
+
+
 				</div>
 
-				<div id="cinna" class="w-full h-1/4 md:w-1/2 md:h-1/2 relative">.</div>
+				<script is:inline>
+				const tag = document.createElement("script");
+				tag.src = "https://www.youtube.com/iframe_api";
+				document.head.appendChild(tag);
+
+
+				
+
+				  document.addEventListener("DOMContentLoaded", () => {
+					
+					window.onYouTubeIframeAPIReady = () => {
+					
+						player = new YT.Player("player", {
+						height: "0",
+						width: "0",
+						color: "white",
+						controls: 0,       
+						modestbranding: 1, 
+						showinfo: 0,       
+						rel: 0,            
+						fs: 0,             
+						disablekb: 1,      
+						iv_load_policy: 3, 
+						playsinline: 1,         
+						volume: 0,
+						playerVars: {
+							listType: "playlist",
+							list: "PLIa4bTQn_6T7S2jG-npUxD2RbOk1LA9yU"
+						},
+						events: {
+							onReady: onPlayerReady
+						}
+						});
+
+						function onPlayerReady() {
+							playlist = player.getPlaylist();
+							playlistLength = playlist.length;
+
+						}
+
+						playlist = [];
+						playlistLength = 0;
+
+						const btnPlay = document.getElementById("btnPlay");
+						const btnPrev = document.getElementById("btnPrev");
+						const btnNext = document.getElementById("btnNext");
+						const volControl = document.getElementById("vol");
+
+						const title = document.getElementById("title");
+						const author = document.getElementById("author");
+						const currentVideo = document.getElementById("currentVideo");
+
+						setInterval(() => {
+							if (player && player.getVideoData) {
+								const videoData = player.getVideoData();
+								const videoId = videoData.video_id;
+								currentVideo.style.backgroundImage = `url(https://img.youtube.com/vi/${videoId}/maxresdefault.jpg)`;
+								title.textContent = videoData.title;
+								author.textContent = videoData.author;
+							}
+						}, 1000);
+
+						playState = false;
+
+						btnPlay.onclick = () => {
+							playState = !playState;
+							btnPlay.src = playState ? "/cinna/UI/playerButtons/stop.png" : "/cinna/UI/playerButtons/play.png";
+							if (playState) {
+								player.playVideo();
+							} else {
+								player.pauseVideo();
+							}
+						};
+
+						btnPrev.onclick = () => {
+							if (player.getPlaylistIndex() == 0) {
+								player.playVideoAt(playlistLength - 1);
+							}else {
+								player.previousVideo();
+							}
+
+							btnPlay.src = "/cinna/UI/playerButtons/play.png";
+						};
+
+						
+						btnNext.onclick = () => {
+							if (player.getPlaylistIndex() == playlistLength - 1) {
+								player.playVideoAt(0);
+							}else {
+								player.nextVideo();
+							}
+
+							btnPlay.src = "/cinna/UI/playerButtons/play.png";
+						};
+						
+
+						volControl.addEventListener("input", (e) => {
+							const vol = e.target.value;
+							player.setVolume(vol);
+						});
+
+					};
+
+					
+
+				});
+				</script>
+
+
 
 			</section>
 
-			<button onclick="iniciar()" class=" absolute top-1/2 left-1/2 rounded-2xl bg-blue-400 border-gray-50 border-dashed border-4 box-border text-2xl px-5 py-3 -translate-y-1/2 -translate-x-1/2" id="btnInicio">Subir volumen y hacer click por favor</button>
+			<!-- <button onclick="iniciar()" class=" absolute top-1/2 left-1/2 rounded-2xl bg-blue-400 border-gray-50 border-dashed border-4 box-border text-2xl px-5 py-3 -translate-y-1/2 -translate-x-1/2" id="btnInicio">Subir volumen y hacer click por favor</button> -->
 
 		</main>
 
