@@ -207,9 +207,6 @@ import Analytics from '@vercel/analytics/astro'
 				tag.src = "https://www.youtube.com/iframe_api";
 				document.head.appendChild(tag);
 
-
-				
-
 				  document.addEventListener("DOMContentLoaded", () => {
 					
 					window.onYouTubeIframeAPIReady = () => {
@@ -239,7 +236,6 @@ import Analytics from '@vercel/analytics/astro'
 						function onPlayerReady() {
 							playlist = player.getPlaylist();
 							playlistLength = playlist.length;
-
 						}
 
 						playlist = [];
@@ -283,7 +279,8 @@ import Analytics from '@vercel/analytics/astro'
 								player.previousVideo();
 							}
 
-							btnPlay.src = "/cinna/UI/playerButtons/play.png";
+							playState = true;
+							btnPlay.src = playState ? "/cinna/UI/playerButtons/stop.png" : "/cinna/UI/playerButtons/play.png";
 						};
 
 						
@@ -294,7 +291,8 @@ import Analytics from '@vercel/analytics/astro'
 								player.nextVideo();
 							}
 
-							btnPlay.src = "/cinna/UI/playerButtons/play.png";
+							playState = true;
+							btnPlay.src = playState ? "/cinna/UI/playerButtons/stop.png" : "/cinna/UI/playerButtons/play.png";
 						};
 						
 
