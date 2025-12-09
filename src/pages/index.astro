@@ -52,7 +52,7 @@ import Analytics from '@vercel/analytics/astro'
 				min-height: 100vh;
 				min-width: 100vw;
 
-				mask-image: url('/cinna.svg');
+				/* mask-image: url('/cinna.svg'); */
 				mask-position: center;
 				mask-repeat: no-repeat;
 				mask-size: 0px;
@@ -149,6 +149,20 @@ import Analytics from '@vercel/analytics/astro'
 			margin-top: -12px; /* centra el thumb */
 			}
 
+			#playlist::-webkit-scrollbar {
+			width: 10px;
+			}
+
+			#playlist::-webkit-scrollbar-track {
+			background: rgb(132, 193, 243);
+			}
+
+			#playlist::-webkit-scrollbar-thumb {
+			background: white;
+			border-radius: 10px;
+			}
+
+
 		</style>
 	</head>
 	
@@ -158,7 +172,7 @@ import Analytics from '@vercel/analytics/astro'
 		
 		<main>
 
-			<section class="w-screen h-screen flex flex-wrap justify-center items-center">
+			<section class="w-screen h-full flex justify-center ">
 
 				<!-- <div class="w-full h-1/4 md:w-1/2 md:h-1/2 absolute top-1/2 left-1/2 -translate-1/2 opacity-50 backdrop-blur-3xl rounded-4xl
 				border-dashed border-10 border-amber-400 " id="contenedor">
@@ -168,41 +182,77 @@ import Analytics from '@vercel/analytics/astro'
 
 				<div id="player"></div>
 
-				<div class="flex bg-blue-300 p-10 rounded-2xl relative items-center gap-5">
-					<div class="bg-cover bg-center bg-no-repeat h-[200px] w-[200px] rounded-lg" id="currentVideo"></div>
+				<div class="h-screen w-fit flex flex-wrap justify-center items-center relative flex-row-reverse">
+					<div class="relative h-full flex items-center">
 
-					<div class="grid grid-rows-4 items-center">
-						<div class="grid grid-rows-2 row-span-3">
-							<div class="flex flex-wrap px-5 items-center align-middle">
-								<h1 class="p-0 m-0 text-center w-full text-3xl text-ellipsis" id="title"></h1>
-								<h2 class="p-0 m-0 text-center w-full text-xl text-ellipsis" id="author">.</h1>
+						<div class="bg-blue-300 h-[50vh] w-auto overflow-y-auto overflow-x-visible rounded-2xl py-9" id="playlist">
+
+						</div>
+
+						<!-- <img src="/cinna/UI/bar2.png" alt="" class="absolute rotate-90 -right-[10px] top-1/2 w-[50vh] translate-x-1/2 -translate-y-1/2"> -->
+
+					</div>
+					
+					<div class="flex bg-blue-300 p-10 rounded-2xl relative items-center">
+						<div class="w-16 h-fit flex-none flex-grow-0 relative ml-8">
+							<div class="rotate-270 absolute left-0 top-0 -translate-x-1/4 flex">
+								<img src="/cinna/UI/playerButtons/volumeIcon.png" alt="" class="size-16 -translate-y-4/12 rotate-90" id="volIcon">
+								<input type="range" id="vol" min="0" max="100" value="50" class="w-[120px]">
+							</div>							
+						</div>
+
+						<div class="bg-cover bg-center bg-no-repeat h-[200px] w-[200px] rounded-lg" id="currentVideo"></div>
+
+						<div class="grid grid-rows-4 items-center">
+							<div class="grid grid-rows-2 row-span-3">
+								<div class="flex flex-wrap px-5 items-center align-middle">
+									<h1 class="p-0 m-0 text-center w-full text-3xl text-ellipsis" id="title"></h1>
+									<h2 class="p-0 m-0 text-center w-full text-xl text-ellipsis" id="author">.</h1>
+								</div>
+
+								<div class="grid grid-cols-3 !items-center">
+									<img src="/cinna/UI/playerButtons/play.png" alt="" id="btnPlay" class="size-24">
+									<img src="/cinna/UI/playerButtons/back.png" alt="" id="btnPrev" class="size-24">
+									<img src="/cinna/UI/playerButtons/next.png" alt="" id="btnNext" class="size-24">
+								</div>
+
 							</div>
 
-							<div class="grid grid-cols-3 !items-center">
-								<img src="/cinna/UI/playerButtons/play.png" alt="" id="btnPlay" class="size-24">
-								<img src="/cinna/UI/playerButtons/back.png" alt="" id="btnPrev" class="size-24">
-								<img src="/cinna/UI/playerButtons/next.png" alt="" id="btnNext" class="size-24">
+							
+
+							<div class="w-full grid grid-cols-5 justify-items-center">
+								<span id="current-time">0:00</span>
+
+								<input class="col-span-3"
+									type="range"
+									id="time-slider"
+									min="0"
+									max="0"
+									value="0"
+									step="1"
+								/>
+
+								<span id="duration">0:00</span>
 							</div>
 
 						</div>
 
-						<div class="flex flex-wrap h-fit px-5">
-							<input type="range" id="vol" min="0" max="100" value="50" class="w-full">
-						</div>
+						<img src="/cinna/UI/bar1.png" alt="" class="absolute rotate-90 left-0 top-1/2 w-[355px] -translate-x-1/2 -translate-y-1/2">
+						<img src="/cinna/UI/bar1.png" alt="" class="absolute rotate-270 right-0 top-1/2 w-[355px] translate-x-1/2 -translate-y-1/2">
+
 					</div>
 
-					
+					<img src="/cinna/UI/bar3.png" alt="" class="absolute w-full rotate-180 top-1/4 left-1/2 -translate-x-1/2 -translate-y-5/12 scale-x-110">
+					<img src="/cinna/UI/bar3.png" alt="" class="absolute w-full bottom-1/4 left-1/2 -translate-x-1/2 translate-y-5/12 scale-x-110">
 
-					<img src="/cinna/UI/bar1.png" alt="" class="absolute rotate-90 left-0 top-1/2 w-[300px] -translate-x-1/2 -translate-y-1/2">
-					<img src="/cinna/UI/bar1.png" alt="" class="absolute rotate-270 right-0 top-1/2 w-[300px] translate-x-1/2 -translate-y-1/2">
-
-					<img src="/cinna/UI/bar3.png" alt="" class="absolute w-full rotate-180 top-0 left-1/2 -translate-x-1/2 -translate-y-1/4 scale-110">
-					<img src="/cinna/UI/bar3.png" alt="" class="absolute w-full bottom-0 left-1/2 -translate-x-1/2 translate-y-1/4 scale-110">
 
 
 				</div>
 
+				<a href="" class="absolute left-1/2 bottom-1/12 -translate-x-1/2 bg-blue-400 border-white hover:bg-blue-500 px-5 py-2 text-3xl rounded-2xl border-4 border-dashed ">Playlist en Youtube</a>
+
 				<script is:inline>
+
 				const tag = document.createElement("script");
 				tag.src = "https://www.youtube.com/iframe_api";
 				document.head.appendChild(tag);
@@ -212,30 +262,141 @@ import Analytics from '@vercel/analytics/astro'
 					window.onYouTubeIframeAPIReady = () => {
 					
 						player = new YT.Player("player", {
-						height: "0",
-						width: "0",
-						color: "white",
-						controls: 0,       
-						modestbranding: 1, 
-						showinfo: 0,       
-						rel: 0,            
-						fs: 0,             
-						disablekb: 1,      
-						iv_load_policy: 3, 
-						playsinline: 1,         
-						volume: 0,
-						playerVars: {
-							listType: "playlist",
-							list: "PLIa4bTQn_6T7S2jG-npUxD2RbOk1LA9yU"
-						},
-						events: {
-							onReady: onPlayerReady
-						}
+							height: "0",
+							width: "0",
+							color: "white",
+							controls: 0,       
+							modestbranding: 1, 
+							showinfo: 0,       
+							rel: 0,            
+							fs: 0,             
+							disablekb: 1,      
+							iv_load_policy: 3, 
+							playsinline: 1,         
+							volume: 0,
+							playerVars: {
+								listType: "playlist",
+								list: "PLIa4bTQn_6T7S2jG-npUxD2RbOk1LA9yU"
+							},
+							events: {
+								onReady: onPlayerReady,
+								onStateChange: onPlayerStateChange
+							}
 						});
 
-						function onPlayerReady() {
+						playlist = document.getElementById("playlist");
+						let duration = 0;
+						let dragging = false;
+
+						async function onPlayerReady() {
+							setBarProgress();
+							setCurrentImage();
+							setInterval(updateSlider, 300);
+
 							playlist = player.getPlaylist();
 							playlistLength = playlist.length;
+							playlistContainer = document.getElementById("playlist");
+
+							for (let i = 0; i < playlistLength; i++) {
+								buttonContainer = document.createElement("button");
+								divContainer = document.createElement("div");
+								image = document.createElement("div");
+								divText = document.createElement("div");
+								videoTitle = document.createElement("h2");
+								videoAuthor = document.createElement("h3");
+
+								divContainer.className = "flex gap-5 items-center p-2";
+
+								buttonContainer.className = "block hover:bg-blue-400 w-full max-w-[330px] overflow-x-hidden text-left";
+								buttonContainer.onclick = (() => {
+									if (player.getPlaylistIndex() != i) {
+										player.playVideoAt(i);
+										playState = true;
+										setBarProgress();
+										btnPlay.src = playState ? "/cinna/UI/playerButtons/stop.png" : "/cinna/UI/playerButtons/play.png";
+									}
+								});
+
+								image.className = "h-[50px] w-[50px] bg-center bg-no-repeat bg-cover rounded-lg";
+								image.style.backgroundImage = `url(https://img.youtube.com/vi/${playlist[i]}/maxresdefault.jpg)`;
+
+								image.onclick = (() => {
+									player.playVideoAt(i);
+									playState = true;
+									setBarProgress();
+									btnPlay.src = playState ? "/cinna/UI/playerButtons/stop.png" : "/cinna/UI/playerButtons/play.png";
+								});
+
+								console.log(playlist[i]);
+								videoData = await getVideoInfoFromIndex(i);
+
+								videoTitle.innerHTML = videoData.title;
+								videoAuthor.innerHTML = videoData.author;	
+
+								divContainer.appendChild(image);
+								divText.appendChild(videoTitle);
+								divText.appendChild(videoAuthor);
+								divContainer.appendChild(divText);
+								buttonContainer.appendChild(divContainer);
+								playlistContainer.appendChild(buttonContainer);
+							}
+						}
+
+						async function getVideoInfoFromIndex(index) {
+						const apiKey = "AIzaSyDT9Fr3cyuXfcGG2omzBOPT3gONCPrvPhs"; // ← pon tu clave aquí
+
+						// 1. obtener el ID del video desde la playlist cargada en tu player
+						const playlist = player.getPlaylist();
+						const videoId = playlist[index];
+
+						if (!videoId) {
+						throw new Error("No existe un video en ese índice");
+						}
+
+						// 2. pedir la información a YouTube Data API
+						const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails&id=${videoId}&key=${apiKey}`;
+						const response = await fetch(url);
+						const data = await response.json();
+
+						if (!data.items || data.items.length === 0) {
+						throw new Error("No se encontró información del video");
+						}
+
+						const info = data.items[0];
+
+						// 3. construir el objeto que vas a recibir
+						return {
+						id: videoId,
+						title: info.snippet.title,
+						author: info.snippet.channelTitle,
+						description: info.snippet.description,
+						duration: info.contentDetails.duration,     // formato ISO, ej: PT5M12S
+						thumbnails: {
+							default: info.snippet.thumbnails.default.url,
+							medium: info.snippet.thumbnails.medium.url,
+							high: info.snippet.thumbnails.high.url,
+							max: info.snippet.thumbnails.maxres?.url ?? info.snippet.thumbnails.high.url,
+
+							// miniatura cuadrada (YouTube no la da, la generamos)
+							square: `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`
+						}
+						};
+						}
+
+
+
+						function setBarProgress(){
+							duration = player.getDuration();
+							document.getElementById("time-slider").max = duration;
+							document.getElementById("duration").textContent = formatTime(duration);
+						}
+
+						function updateSlider() {
+							if (dragging) return;
+								const current = player.getCurrentTime();
+								
+								document.getElementById("time-slider").value = current;
+								document.getElementById("current-time").textContent = formatTime(current);
 						}
 
 						playlist = [];
@@ -250,15 +411,71 @@ import Analytics from '@vercel/analytics/astro'
 						const author = document.getElementById("author");
 						const currentVideo = document.getElementById("currentVideo");
 
+						const slider = document.getElementById("time-slider");
+
+						// cuando arrastra
+						slider.addEventListener("input", () => {
+						dragging = true;
+						document.getElementById("current-time").textContent =
+							formatTime(slider.value);
+						playState = false;
+						btnPlay.src = playState ? "/cinna/UI/playerButtons/stop.png" : "/cinna/UI/playerButtons/play.png";
+						player.pauseVideo();
+						});
+
+						// cuando suelta → saltar al segundo
+						slider.addEventListener("change", () => {
+						dragging = false;
+						player.seekTo(Number(slider.value), true);
+
+						playState = true;
+						btnPlay.src = playState ? "/cinna/UI/playerButtons/stop.png" : "/cinna/UI/playerButtons/play.png";
+						player.playVideo();
+						});
+
+						function formatTime(s) {
+							const m = Math.floor(s / 60);
+							const sec = Math.floor(s % 60);
+							return `${m}:${sec}`;
+						}
+
+						lastId = "null";
+
 						setInterval(() => {
-							if (player && player.getVideoData) {
-								const videoData = player.getVideoData();
-								const videoId = videoData.video_id;
-								currentVideo.style.backgroundImage = `url(https://img.youtube.com/vi/${videoId}/maxresdefault.jpg)`;
-								title.textContent = videoData.title;
-								author.textContent = videoData.author;
-							}
+						 	if (player && player.getVideoData) {
+
+								if (lastId != player.getVideoData().video_id) {
+									setBarProgress();
+									const videoData = player.getVideoData();
+									const videoId = videoData.video_id;
+									currentVideo.style.backgroundImage = `url(https://img.youtube.com/vi/${videoId}/maxresdefault.jpg)`;
+									title.textContent = videoData.title;
+									author.textContent = videoData.author;
+									lastId = videoId;
+								}
+
+						 		
+						 	}
 						}, 1000);
+
+						function setCurrentImage(){
+							if (player && player.getVideoData) {
+									const videoData = player.getVideoData();
+									const videoId = videoData.video_id;
+									currentVideo.style.backgroundImage = `url(https://img.youtube.com/vi/${videoId}/maxresdefault.jpg)`;
+									title.textContent = videoData.title;
+									author.textContent = videoData.author;
+							}
+						}
+
+						function onPlayerStateChange(event) {
+							if (event.data === YT.PlayerState.ENDED) {
+								console.log("Video ended");
+								setBarProgress();
+								setCurrentImage();
+							}
+						}
+
 
 						playState = false;
 
@@ -278,7 +495,8 @@ import Analytics from '@vercel/analytics/astro'
 							}else {
 								player.previousVideo();
 							}
-
+							
+							setBarProgress();
 							playState = true;
 							btnPlay.src = playState ? "/cinna/UI/playerButtons/stop.png" : "/cinna/UI/playerButtons/play.png";
 						};
@@ -291,15 +509,32 @@ import Analytics from '@vercel/analytics/astro'
 								player.nextVideo();
 							}
 
+							setBarProgress();
 							playState = true;
 							btnPlay.src = playState ? "/cinna/UI/playerButtons/stop.png" : "/cinna/UI/playerButtons/play.png";
 						};
 						
+						volumeValue = 50;
 
 						volControl.addEventListener("input", (e) => {
 							const vol = e.target.value;
+							console.log(volumeValue);
+							volumeValue = vol;
 							player.setVolume(vol);
 						});
+
+						volButton = document.getElementById("volIcon");
+						volButton.onclick = () => {
+							if (volControl.value > 0) {
+								volButton.src = "/cinna/UI/playerButtons/silencedIcon.png";
+								player.setVolume(0);
+								volControl.value = 0;
+							} else {
+								volButton.src = "/cinna/UI/playerButtons/volumeIcon.png";
+								player.setVolume(volumeValue);
+								volControl.value = volumeValue;
+							}
+						}
 
 					};
 
